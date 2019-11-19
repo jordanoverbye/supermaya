@@ -1,5 +1,6 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
+  base = "supermaya-gatsby/"
+  command = "yarn build"
+  publish = "public"
 [template.environment]
   KEYSTONE_API = "Paste your Keystone API URL here"
