@@ -90,7 +90,7 @@ const navigationItems = [
   },
   {
     text: "Feed",
-    url: "/feed.xml",
+    url: "/rss.xml",
     external: true,
   },
 ]
