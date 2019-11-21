@@ -1,12 +1,11 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
 const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
   return (
     <Layout>
       <SEO
@@ -29,11 +28,33 @@ const BlogPostTemplate = ({ data }) => {
             </div>
           </div>
         </article>
+        <div className="l-container">
+          <footer className="l-stack">
+            <h2>Tags</h2>
+            <div className="l-stack-footer">
+              <Tags tags={post.frontmatter.tags} />
+            </div>
+          </footer>
+        </div>
       </div>
       <div className="l-container">
         <Comments />
       </div>
     </Layout>
+  )
+}
+
+const Tags = ({ tags }) => {
+  return (
+    <ul className="l-post-tags">
+      {tags.map((tag, index) => (
+        <li key={index}>
+          <Link className="post-tag" to="/tags/demo-content">
+            {tag}
+          </Link>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -63,14 +84,6 @@ const Comments = () => {
   )
 }
 
-//     <div class="l-container">
-//     {/* <style>.l-comment-name{display:flex;align-items:center}.l-comment-name>*+*{margin-left:1rem}.keystone-comments{list-style:none}.keystone-comments>*+*{margin-top:1rem}.keystone-comment{border:solid 1px #ccc;padding:1rem}.comment-date{color:#767676;font-size:.71429rem}.l-comment-meta{display:flex;flex-direction:column}.js-keystone-comment-form>*+*{margin-top:1rem}</style> */}
-//     <div class="l-stack"><div id="keystone-comments" class="l-stack">
-//   <h2>Comments</h2>
-// </div><hr /><div id="keystone-comments-form" class="l-stack">
-
-// </div></div></div> */}
-
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
@@ -88,6 +101,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
   }
