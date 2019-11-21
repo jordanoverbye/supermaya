@@ -1,9 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Hero from "../components/Hero"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 
 class BlogIndex extends React.Component {
   render() {
@@ -13,13 +13,7 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Posts" />
-        <section className="theme">
-          <header className="l-container">
-            <div className="l-jumbo">
-              <h1>Posts</h1>
-            </div>
-          </header>
-        </section>
+        <Hero title="Posts" />
         <section class="l-container">
           <div className="l-stack">
             <ul class="l-post-list" reversed>
