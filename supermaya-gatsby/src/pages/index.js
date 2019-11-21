@@ -42,6 +42,36 @@ const IndexPage = ({ data, location }) => {
           </ul>
         </div>
       </section>
+      <footer className="l-container">
+        <nav className="l-pagination l-pagination--right">
+          <Link
+            to="/posts"
+            dataDirection="forwards"
+            className="l-pagination-link l-pagination-link--right"
+          >
+            <span>See all posts </span>
+            <span aria-hidden="true">
+              <svg
+                focusable="false"
+                ariaHidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ maxWidth: 200 }}
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeMiterlimit="10"
+                  strokeWidth="2"
+                  d="M2 12h20M15 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </Link>
+        </nav>
+      </footer>
     </Layout>
   )
 }
