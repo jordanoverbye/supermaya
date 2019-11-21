@@ -5,28 +5,26 @@ import Hero from "../components/Hero"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="Posts" />
-        <Hero title="Posts" />
-        <section class="l-container">
-          <div className="l-stack">
-            <ul class="l-post-list" reversed>
-              {posts.map(({ node }, index) => {
-                return <BlogPostPreview key={index} node={node} />
-              })}
-            </ul>
-          </div>
-        </section>
-      </Layout>
-    )
-  }
+const PostsPage = ({ data }) => {
+  const posts = data.allMarkdownRemark.edges
+  return (
+    <Layout>
+      <SEO title="Posts" />
+      <Hero title="Posts" />
+      <section class="l-container">
+        <div className="l-stack">
+          <ul class="l-post-list" reversed>
+            {posts.map(({ node }, index) => {
+              return <BlogPostPreview key={index} node={node} />
+            })}
+          </ul>
+        </div>
+      </section>
+    </Layout>
+  )
 }
+
+export default PostsPage
 
 const BlogPostPreview = ({ node }) => {
   const title = node.frontmatter.title || node.fields.slug
@@ -59,8 +57,6 @@ const BlogPostPreview = ({ node }) => {
     </li>
   )
 }
-
-export default BlogIndex
 
 export const pageQuery = graphql`
   query {

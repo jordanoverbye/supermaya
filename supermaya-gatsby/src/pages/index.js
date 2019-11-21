@@ -5,12 +5,12 @@ import Hero from "../components/Hero"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-const IndexPage = ({ data, location }) => {
+const IndexPage = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="Gatsby Supermaya Demo" />
+    <Layout>
+      <SEO title="Simple Blog" />
       <Hero title={siteTitle}>
         <div className="l-stack">
           <p>
