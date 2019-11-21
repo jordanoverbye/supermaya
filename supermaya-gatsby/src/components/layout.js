@@ -12,7 +12,9 @@ class Layout extends React.Component {
     return (
       <div className="l-page">
         <Header />
-        <main id="main-content">{children}</main>
+        <main id="main-content">
+          <div className="l-stack l-stack--large">{children}</div>
+        </main>
         <Footer />
       </div>
     )
